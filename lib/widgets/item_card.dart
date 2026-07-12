@@ -27,12 +27,12 @@ class ItemCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadiusGeometry.circular(20),
               child: Image.network(
-                state.model[index].images![0],
+                state.model[index].images[0],
                 fit: BoxFit.cover,
               ),
             ),
             Text(
-              state.model[index].title ?? "",
+              state.model[index].title ,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: AppTextStyles.kText16Black,

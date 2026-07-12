@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store/core/helpers/app_colors.dart';
 import 'package:store/core/helpers/app_text_styles.dart';
+import 'package:store/features/home/controller/cubit/categories_cubit.dart';
 import 'package:store/features/home/cubit/home_cubit.dart';
 import 'package:store/widgets/products.dart';
 import 'package:store/widgets/search_bar_widget.dart';
@@ -12,17 +13,13 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> categories = [
-      'All',
-      'Tshirts',
-      'Jeans',
-      'Shoes',
-      'Bags',
-      'Accessories',
-    ];
+   
     TextEditingController controller = TextEditingController();
-    return BlocProvider(
-      create: (context) => HomeCubit()..getProducts(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => HomeCubit()..getAllProducts()),
+        BlocProvider(create: (context) => CategoriesCubit()..getCategories()),
+      ],
       child: Scaffold(
         backgroundColor: AppColors.white,
         body: Padding(
@@ -32,7 +29,7 @@ class Home extends StatelessWidget {
             children: [
               Text('Discover', style: AppTextStyles.kText32Black),
               SearchBarWidget(controller: controller),
-              StoreCategories(categories: categories),
+              StoreCategories(),
               SizedBox(height: 10),
               BlocBuilder<HomeCubit, HomeState>(
                 builder: (context, state) {

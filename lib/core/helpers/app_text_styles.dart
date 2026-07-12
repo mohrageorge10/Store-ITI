@@ -8,6 +8,12 @@ class AppTextStyles {
     color: AppColors.black,
   );
 
+  static const kText10Black = TextStyle(
+    fontWeight: FontWeight.w700,
+    fontSize: 10,
+    color: AppColors.black,
+  );
+
   static const kText16Black = TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: 16,

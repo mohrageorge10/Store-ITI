@@ -10,7 +10,7 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
   final dio = Dio();
 
-  Future<void> getProducts() async {
+  Future<void> getAllProducts() async {
     try {
       emit(HomeLoading());
       final Response response = await dio.get(
@@ -23,6 +23,26 @@ class HomeCubit extends Cubit<HomeState> {
           .toList();
 
       emit(HomeSuccess(data));
+    } on DioException catch (e) {
+      emit(HomeFailure(e.message ?? "Error found"));
+    } catch (e) {
+      emit(HomeFailure(e.toString()));
+    }
+  }
+
+  Future<void> filterProducts({int? categoryId}) async {
+    try {
+      emit(HomeLoading());
+      final Response response = await dio.get(
+        '${ApiConstants.baseUrl}${EndPoints.products}',
+        queryParameters: {ApiConstants.categoryId: categoryId},
+      );
+
+      final List<ProductModel> products = (response.data as List)
+          .map((product) => ProductModel.fromJson(product))
+          .toList();
+
+      emit(HomeSuccess(products));
     } on DioException catch (e) {
       emit(HomeFailure(e.message ?? "Error found"));
     } catch (e) {

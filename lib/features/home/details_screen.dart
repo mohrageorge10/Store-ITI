@@ -32,9 +32,9 @@ class DetailsScreen extends StatelessWidget {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20),
-                      child: Image.network(model.images![0], fit: BoxFit.cover),
+                      child: Image.network(model.images[0], fit: BoxFit.cover),
                     ),
-                    Text(model.title ?? "", style: AppTextStyles.kText24Black),
+                    Text(model.title , style: AppTextStyles.kText24Black),
                     Row(
                       spacing: 6,
                       children: [
@@ -55,7 +55,7 @@ class DetailsScreen extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      model.description ?? "",
+                      model.description,
                       style: AppTextStyles.kText16Gray,
                     ),
                     SizedBox(height: 20),
