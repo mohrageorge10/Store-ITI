@@ -30,7 +30,9 @@ class CartProductModel {
       quantity: json[ApiConstants.quantity],
       total: json[ApiConstants.total],
       discountPercentage: json[ApiConstants.discountPercentage],
-      discountedTotal: json[ApiConstants.discountedTotal],
+      discountedTotal:
+          json[ApiConstants.discountedTotal] ??
+          json[ApiConstants.discountedPrice],
     );
   }
 }

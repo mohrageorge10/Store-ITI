@@ -32,6 +32,7 @@ class ApiConstants {
   static const String userId = "userId";
   static const String totalProducts = "totalProducts";
   static const String totalQuantity = "totalQuantity";
+  static const discountedPrice = "discountedPrice";
 
   // ================= Location =================
   static const String latitude = "latitude";
@@ -43,5 +44,6 @@ class EndPoints {
   static const String products = "products";
   static const String categories = "categories";
   static const String cart = "carts/user/1";
+  static const String addToCart = "carts/add";
   static const String locations = "locations";
 }

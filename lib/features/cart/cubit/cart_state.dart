@@ -15,3 +15,17 @@ final class CartFailure extends CartState {
   final String msg;
   CartFailure(this.msg);
 }
+
+
+// ============= Add to Cart =============
+final class AddCartLoading extends CartState {}
+
+final class AddCartSuccess extends CartState {
+  final List<CartProductModel> products;
+  AddCartSuccess(this.products);
+}
+
+final class AddCartFailure extends CartState {
+  final String msg;
+  AddCartFailure(this.msg);
+}

@@ -21,7 +21,9 @@ class HomeCubit extends Cubit<HomeState> {
       final data = products
           .map((product) => ProductModel.fromJson(product))
           .toList();
-
+      for (final product in data.take(5)) {
+        print("${product.id} - ${product.title}");
+      }
       emit(HomeSuccess(data));
     } on DioException catch (e) {
       emit(HomeFailure(e.message ?? "Error found"));
