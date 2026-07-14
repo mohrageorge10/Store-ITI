@@ -1,7 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store/core/helpers/app_colors.dart';
 import 'package:store/core/helpers/app_text_styles.dart';
+import 'package:store/core/helpers/locale_keys.dart';
+import 'package:store/core/loading/app_loading.dart';
 import 'package:store/features/home/controller/cubit/categories_cubit.dart';
 import 'package:store/features/home/cubit/home_cubit.dart';
 import 'package:store/widgets/products.dart';
@@ -13,12 +16,14 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   
     TextEditingController controller = TextEditingController();
+
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => HomeCubit()..getAllProducts()),
-        BlocProvider(create: (context) => CategoriesCubit()..getCategories()),
+        BlocProvider(
+          create: (context) => CategoriesCubit()..getCategories(),
+        ),
       ],
       child: Scaffold(
         backgroundColor: AppColors.white,
@@ -27,14 +32,17 @@ class Home extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text('Discover', style: AppTextStyles.kText32Black),
+              Text(
+                LocaleKeys.discover.tr(),
+                style: AppTextStyles.kText32Black,
+              ),
               SearchBarWidget(controller: controller),
-              StoreCategories(),
-              SizedBox(height: 10),
+              const StoreCategories(),
+              const SizedBox(height: 10),
               BlocBuilder<HomeCubit, HomeState>(
                 builder: (context, state) {
                   if (state is HomeLoading) {
-                    return Center(child: CircularProgressIndicator());
+                    return const Center(child: AppLoading());
                   }
                   if (state is HomeFailure) {
                     return Center(child: Text(state.msg));
@@ -42,7 +50,7 @@ class Home extends StatelessWidget {
                   if (state is HomeSuccess) {
                     return Expanded(child: Products(state: state));
                   }
-                  return SizedBox();
+                  return const SizedBox();
                 },
               ),
             ],

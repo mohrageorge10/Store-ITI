@@ -1,6 +1,8 @@
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:store/core/helpers/app_field.dart';
+import 'package:store/core/helpers/locale_keys.dart';
 import 'package:store/widgets/filter.dart';
 
 class SearchBarWidget extends StatelessWidget {
@@ -18,7 +20,7 @@ class SearchBarWidget extends StatelessWidget {
         Expanded(
           child: AppField(
             controller: controller,
-            hint: "Search for clothes...",
+            hint: LocaleKeys.searchHint.tr(),
             isSearch: true,
           ),
         ),

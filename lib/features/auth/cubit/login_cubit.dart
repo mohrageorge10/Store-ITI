@@ -1,6 +1,8 @@
-import 'package:bloc/bloc.dart';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:store/core/cache/cache_helper.dart';
 import 'package:store/core/helpers/api_constants.dart';
 import 'package:store/models/user_model.dart';
 
@@ -28,6 +30,10 @@ class LoginCubit extends Cubit<LoginState> {
       );
       if (response.statusCode == 200 || response.statusCode == 201) {
         UserModel userModel = UserModel.fromJson(response.data); // هستخدمه في ال cache 
+        if(userModel.token != null) {
+          await CacheHelper.saveToken(userModel.token!);
+        }
+        
         emit(LoginSuccess());
       } else {
         emit(LoginFailure("No token"));

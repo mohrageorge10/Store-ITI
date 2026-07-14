@@ -1,0 +1,57 @@
+{
+  "discover": "اكتشف",
+
+  "login_title": "سجّل الدخول لحسابك",
+  "login_subtitle": "سعداء برجوعك.",
+  "sign_in_button": "تسجيل الدخول",
+  "no_account_text": "معندكش حساب؟ ",
+  "join_button": "اشترك",
+  "login_success_msg": "تم تسجيل الدخول بنجاح",
+
+  "create_account_title": "إنشاء حساب",
+  "create_account_subtitle": "خلينا ننشئ حسابك.",
+  "create_account_button": "إنشاء حساب",
+  "already_have_account_text": "عندك حساب بالفعل؟ ",
+  "log_in_button": "تسجيل الدخول",
+
+  "full_name_label": "الاسم بالكامل",
+  "full_name_hint": "اكتب اسمك بالكامل",
+  "username_label": "اسم المستخدم",
+  "email_hint": "اكتب بريدك الإلكتروني",
+  "password_label": "كلمة المرور",
+  "password_hint": "اكتب كلمة المرور",
+  "confirm_password_label": "تأكيد كلمة المرور",
+
+  "account_title": "الحساب",
+  "my_orders": "طلباتي",
+  "my_details": "بياناتي",
+  "address_book": "دفتر العناوين",
+  "faqs": "الأسئلة الشائعة",
+  "help_center": "مركز المساعدة",
+  "change_language_button": "تغيير اللغة",
+  "logout": "تسجيل الخروج",
+
+  "address_title": "العنوان",
+  "saved_addresses": "العناوين المحفوظة",
+  "default_label": "افتراضي",
+
+  "details_title": "التفاصيل",
+  "reviews_count": "(45 تقييم)",
+  "price_label": "السعر",
+  "add_to_cart_button": "أضف إلى السلة",
+  "added_successfully_msg": "تمت الإضافة بنجاح",
+
+  "my_cart_title": "سلتي",
+  "subtotal_label": "الإجمالي الفرعي",
+  "vat_label": "الضريبة (%)",
+  "shipping_fee_label": "رسوم الشحن",
+  "total_label": "الإجمالي",
+  "checkout_button": "إتمام الشراء",
+
+  "search_hint": "دور على منتج...",
+  "all_categories": "الكل",
+
+  "nav_home": "الرئيسية",
+  "nav_cart": "السلة",
+  "nav_account": "الحساب"
+}

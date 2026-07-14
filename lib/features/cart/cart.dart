@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store/core/helpers/app_button.dart';
 import 'package:store/core/helpers/app_text_styles.dart';
+import 'package:store/core/helpers/locale_keys.dart';
 import 'package:store/features/cart/cubit/cart_cubit.dart';
 import 'package:store/widgets/cart_items.dart';
 
@@ -18,7 +20,10 @@ class Cart extends StatelessWidget {
           backgroundColor: Colors.white,
           elevation: 0,
           scrolledUnderElevation: 0,
-          title: const Text("My Cart", style: AppTextStyles.kText24Black),
+          title: Text(
+            LocaleKeys.myCartTitle.tr(),
+            style: AppTextStyles.kText24Black,
+          ),
           centerTitle: true,
           iconTheme: const IconThemeData(color: Colors.black),
         ),
@@ -26,7 +31,7 @@ class Cart extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: Column(
             children: [
-              CartItems(),
+              const CartItems(),
               Padding(
                 padding: const EdgeInsets.only(top: 8.0),
                 child: Row(
@@ -35,11 +40,23 @@ class Cart extends StatelessWidget {
                     Column(
                       spacing: 5,
                       children: [
-                        Text("Sub-total", style: AppTextStyles.kText16Gray),
-                        Text("VAT (%)", style: AppTextStyles.kText16Gray),
-                        Text("Shipping fee", style: AppTextStyles.kText16Gray),
-                        SizedBox(height: 10),
-                        Text("Total", style: AppTextStyles.kText16Black),
+                        Text(
+                          LocaleKeys.subtotalLabel.tr(),
+                          style: AppTextStyles.kText16Gray,
+                        ),
+                        Text(
+                          LocaleKeys.vatLabel.tr(),
+                          style: AppTextStyles.kText16Gray,
+                        ),
+                        Text(
+                          LocaleKeys.shippingFeeLabel.tr(),
+                          style: AppTextStyles.kText16Gray,
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          LocaleKeys.totalLabel.tr(),
+                          style: AppTextStyles.kText16Black,
+                        ),
                       ],
                     ),
                     Column(
@@ -48,17 +65,17 @@ class Cart extends StatelessWidget {
                         Text("\$ 5,870", style: AppTextStyles.kText16Black),
                         Text("\$ 0.00", style: AppTextStyles.kText16Black),
                         Text("\$ 80", style: AppTextStyles.kText16Black),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Text("\$ 5,950", style: AppTextStyles.kText16Black),
                       ],
                     ),
                   ],
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               AppButton(
                 onPressed: () {},
-                label: "Go To Checkout",
+                label: LocaleKeys.checkoutButton.tr(),
                 suffixIcon: true,
               ),
             ],

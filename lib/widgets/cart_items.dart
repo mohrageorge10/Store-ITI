@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store/core/helpers/app_colors.dart';
+import 'package:store/core/loading/app_loading.dart';
 import 'package:store/core/helpers/app_text_styles.dart';
 import 'package:store/features/cart/cubit/cart_cubit.dart';
 import 'package:store/widgets/counter.dart';
@@ -20,7 +21,7 @@ class _CartItemsState extends State<CartItems> {
     return BlocBuilder<CartCubit, CartState>(
       builder: (context, state) {
         if (state is CartLoading) {
-          return Center(child: CircularProgressIndicator());
+          return Center(child: AppLoading());
         }
         if (state is CartFailure) {
           return Center(child: Text(state.msg));

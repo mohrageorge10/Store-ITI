@@ -1,5 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:store/core/helpers/app_button.dart';
 import 'package:store/core/helpers/app_text_styles.dart';
+import 'package:store/core/helpers/locale_keys.dart';
 import 'package:store/features/account/address_screen.dart';
 import 'package:store/widgets/account_tile.dart';
 
@@ -9,27 +12,31 @@ class Account extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> accountItems = [
-      {'icon': Icons.inventory_2_outlined, 'title': "My Orders"},
-      {'icon': Icons.badge_outlined, 'title': "My Details"},
-      {'icon': Icons.home_outlined, 'title': "Address Book"},
-      {'icon': Icons.help_outline, 'title': "FAQs"},
-      {'icon': Icons.headset_mic_outlined, 'title': "Help Center"},
+      {'icon': Icons.inventory_2_outlined, 'title': LocaleKeys.myOrders.tr()},
+      {'icon': Icons.badge_outlined, 'title': LocaleKeys.myDetails.tr()},
+      {'icon': Icons.home_outlined, 'title': LocaleKeys.addressBook.tr()},
+      {'icon': Icons.help_outline, 'title': LocaleKeys.faqs.tr()},
+      {'icon': Icons.headset_mic_outlined, 'title': LocaleKeys.helpCenter.tr()},
     ];
+
     final List<Widget> pages = [
-      const Text("My Orders"),
-      const Text("My Details"),
-      AddressScreen(),
-      const Text("FAQs"),
-      const Text("Help Center"),
+      Text(LocaleKeys.myOrders.tr()),
+      Text(LocaleKeys.myDetails.tr()),
+      const AddressScreen(),
+      Text(LocaleKeys.faqs.tr()),
+      Text(LocaleKeys.helpCenter.tr()),
     ];
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
-
-        title: const Text("Account", style: AppTextStyles.kText24Black),
+        title: Text(
+          LocaleKeys.accountTitle.tr(),
+          style: AppTextStyles.kText24Black,
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(10),
@@ -53,18 +60,33 @@ class Account extends StatelessWidget {
                 },
               ),
             ),
-
+            const Divider(height: 1),
+            AppButton(
+              onPressed: () {
+                if (context.locale == const Locale('en')) {
+                  context.setLocale(const Locale('ar'));
+                } else {
+                  context.setLocale(const Locale('en'));
+                }
+              },
+              label: LocaleKeys.changeLanguageButton.tr(),
+            ),
             Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 30),
+              padding: const EdgeInsets.only(
+                left: 20,
+                right: 20,
+                bottom: 30,
+                top: 20,
+              ),
               child: InkWell(
                 onTap: () {},
-                child: const Row(
+                child: Row(
                   children: [
-                    Icon(Icons.logout, color: Colors.red),
-                    SizedBox(width: 12),
+                    const Icon(Icons.logout, color: Colors.red),
+                    const SizedBox(width: 12),
                     Text(
-                      "Logout",
-                      style: TextStyle(
+                      LocaleKeys.logout.tr(),
+                      style: const TextStyle(
                         color: Colors.red,
                         fontSize: 18,
                         fontWeight: FontWeight.w500,

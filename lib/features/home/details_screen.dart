@@ -1,10 +1,12 @@
 import 'package:animated_snack_bar/animated_snack_bar.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store/core/helpers/app_button.dart';
 import 'package:store/core/helpers/app_colors.dart';
 import 'package:store/core/helpers/app_text_styles.dart';
 import 'package:store/core/helpers/app_toast.dart';
+import 'package:store/core/helpers/locale_keys.dart';
 import 'package:store/features/cart/cubit/cart_cubit.dart';
 import 'package:store/models/product_model.dart';
 
@@ -23,7 +25,10 @@ class DetailsScreen extends StatelessWidget {
           elevation: 0,
           scrolledUnderElevation: 0,
           centerTitle: true,
-          title: const Text('Details', style: AppTextStyles.kText32Black),
+          title: Text(
+            LocaleKeys.detailsTitle.tr(),
+            style: AppTextStyles.kText32Black,
+          ),
         ),
         body: Padding(
           padding: const EdgeInsets.all(10),
@@ -48,7 +53,6 @@ class DetailsScreen extends StatelessWidget {
                         spacing: 6,
                         children: [
                           Icon(Icons.star, color: AppColors.yellow),
-
                           Text(
                             "4.0/5",
                             style: AppTextStyles.kText16Black.copyWith(
@@ -56,15 +60,18 @@ class DetailsScreen extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            "(45 reviews)",
+                            LocaleKeys.reviewsCount.tr(),
                             style: AppTextStyles.kText16Gray.copyWith(
                               fontWeight: FontWeight.w500,
                             ),
                           ),
                         ],
                       ),
-                      Text(model.description, style: AppTextStyles.kText16Gray),
-                      SizedBox(height: 20),
+                      Text(
+                        model.description,
+                        style: AppTextStyles.kText16Gray,
+                      ),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 ),
@@ -77,9 +84,12 @@ class DetailsScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Price", style: AppTextStyles.kText16Gray),
                         Text(
-                          "\$ ${model.price} ",
+                          LocaleKeys.priceLabel.tr(),
+                          style: AppTextStyles.kText16Gray,
+                        ),
+                        Text(
+                          "\$ ${model.price}",
                           style: AppTextStyles.kText24Black,
                         ),
                       ],
@@ -91,7 +101,7 @@ class DetailsScreen extends StatelessWidget {
                       listener: (context, state) {
                         if (state is AddCartSuccess) {
                           showSnackBar(
-                            message: "Added Successfully",
+                            message: LocaleKeys.addedSuccessfullyMsg.tr(),
                             type: AnimatedSnackBarType.success,
                             context: context,
                           );
@@ -109,7 +119,7 @@ class DetailsScreen extends StatelessWidget {
                         return AppButton(
                           prefixIcon: true,
                           isLoading: state is AddCartLoading,
-                          label: "Add to Cart",
+                          label: LocaleKeys.addToCartButton.tr(),
                           onPressed: state is AddCartLoading
                               ? null
                               : () {

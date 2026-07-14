@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store/core/helpers/app_text_styles.dart';
+import 'package:store/core/helpers/locale_keys.dart';
 import 'package:store/features/account/cubit/location_cubit.dart';
 import 'package:store/widgets/address_card.dart';
 
@@ -19,15 +21,21 @@ class AddressScreen extends StatelessWidget {
           scrolledUnderElevation: 0,
           centerTitle: true,
           iconTheme: const IconThemeData(color: Colors.black),
-          title: const Text("Address", style: AppTextStyles.kText24Black),
+          title: Text(
+            LocaleKeys.addressTitle.tr(),
+            style: AppTextStyles.kText24Black,
+          ),
         ),
         body: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Text("Saved Addresses", style: AppTextStyles.kText16Black),
-              AddressCard(),
+              Text(
+                LocaleKeys.savedAddresses.tr(),
+                style: AppTextStyles.kText16Black,
+              ),
+              const AddressCard(),
             ],
           ),
         ),

@@ -1,4 +1,5 @@
 import 'package:animated_snack_bar/animated_snack_bar.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store/core/helpers/app_button.dart';
@@ -7,6 +8,8 @@ import 'package:store/core/helpers/app_field.dart';
 import 'package:store/core/helpers/app_pass_field.dart';
 import 'package:store/core/helpers/app_text_styles.dart';
 import 'package:store/core/helpers/app_toast.dart';
+import 'package:store/core/helpers/locale_keys.dart';
+import 'package:store/core/loading/app_loading.dart';
 import 'package:store/features/auth/cubit/login_cubit.dart';
 import 'package:store/features/auth/sign_up.dart';
 import 'package:store/features/home_nav/view.dart';
@@ -38,7 +41,7 @@ class Login extends StatelessWidget {
             }
             if (state is LoginSuccess) {
               showSnackBar(
-                message: "Login Success",
+                message: LocaleKeys.loginSuccessMsg.tr(),
                 type: AnimatedSnackBarType.success,
                 context: context,
               );
@@ -54,7 +57,7 @@ class Login extends StatelessWidget {
             final cubit = context.read<LoginCubit>();
             // ============= Loading =============
             if (state is LoginLoading) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(child: AppLoading());
             }
             // ================= Success =============
             else {
@@ -70,35 +73,35 @@ class Login extends StatelessWidget {
 
                   children: [
                     Text(
-                      "Login to your account",
+                      LocaleKeys.loginTitle.tr(),
                       style: AppTextStyles.kText32Black,
                     ),
 
                     Text(
-                      "It’s great to see you again.",
+                      LocaleKeys.loginSubtitle.tr(),
                       style: AppTextStyles.kText16Gray,
                     ),
                     SizedBox(height: 24),
-                    Text("User Name", style: AppTextStyles.kText16Black),
+                    Text(LocaleKeys.usernameLabel.tr(), style: AppTextStyles.kText16Black),
                     AppField(
                       controller: cubit.userEmailController,
-                      hint: "Enter your email address",
+                      hint: LocaleKeys.emailHint.tr(),
                       obscureText: false,
                     ),
                     SizedBox(height: 16),
-                    Text("Password", style: AppTextStyles.kText16Black),
+                    Text(LocaleKeys.passwordLabel.tr(), style: AppTextStyles.kText16Black),
                     AppPassField(
                       controller: cubit.userPasswordController,
-                      hint: "Enter your password",
+                      hint: LocaleKeys.passwordHint.tr(),
                     ),
                     SizedBox(height: 55),
-                    AppButton(onPressed: cubit.login, label: 'Sign In'),
+                    AppButton(onPressed: cubit.login, label: LocaleKeys.signInButton.tr()),
                     Spacer(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Don't have an account? ",
+                          LocaleKeys.noAccountText.tr(),
                           style: AppTextStyles.kText16Gray,
                         ),
                         GestureDetector(
@@ -108,7 +111,7 @@ class Login extends StatelessWidget {
                             ).push(MaterialPageRoute(builder: (_) => SignUp()));
                           },
                           child: Text(
-                            "Join",
+                            LocaleKeys.joinButton.tr(),
                             style: AppTextStyles.kText16Black.copyWith(
                               decoration: TextDecoration.underline,
                             ),

@@ -1,14 +1,16 @@
-
 import 'package:flutter/material.dart';
 
 class SummaryRow extends StatelessWidget {
   const SummaryRow({
-    super.key, required this.label, required this.value, required this.isTotal,
+    super.key,
+    required this.label,
+    required this.value,
+    required this.isTotal,
   });
 
-  final String label ;
-  final String value ;
-  final bool isTotal ;
+  final String label;
+  final String value;
+  final bool isTotal;
 
   @override
   Widget build(BuildContext context) {

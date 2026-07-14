@@ -1,6 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store/core/helpers/app_colors.dart';
+import 'package:store/core/helpers/locale_keys.dart';
+import 'package:store/core/loading/app_loading.dart';
 import 'package:store/core/helpers/app_text_styles.dart';
 import 'package:store/features/account/cubit/location_cubit.dart';
 
@@ -12,7 +15,7 @@ class AddressCard extends StatelessWidget {
     return BlocBuilder<LocationCubit, LocationState>(
       builder: (context, state) {
         if (state is LocationLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: AppLoading());
         }
         if (state is LocationFailure) {
           return Center(child: Text(state.message));
@@ -69,8 +72,8 @@ class AddressCard extends StatelessWidget {
                                       color: Colors.grey.shade300,
                                       borderRadius: BorderRadius.circular(6),
                                     ),
-                                    child: const Text(
-                                      "Default",
+                                    child:  Text(
+                                     LocaleKeys.defaultLabel.tr(),
                                       style: AppTextStyles.kText10Black,
                                     ),
                                   ),

@@ -1,0 +1,57 @@
+{
+  "discover": "Discover",
+
+  "login_title": "Login to your account",
+  "login_subtitle": "It’s great to see you again.",
+  "sign_in_button": "Sign In",
+  "no_account_text": "Don't have an account? ",
+  "join_button": "Join",
+  "login_success_msg": "Login Success",
+
+  "create_account_title": "Create an account",
+  "create_account_subtitle": "Let’s create your account.",
+  "create_account_button": "Create an Account",
+  "already_have_account_text": "Already have an account? ",
+  "log_in_button": "Log In",
+
+  "full_name_label": "Full Name",
+  "full_name_hint": "Enter your full name",
+  "username_label": "User Name",
+  "email_hint": "Enter your email address",
+  "password_label": "Password",
+  "password_hint": "Enter your password",
+  "confirm_password_label": "Confirm Password",
+
+  "account_title": "Account",
+  "my_orders": "My Orders",
+  "my_details": "My Details",
+  "address_book": "Address Book",
+  "faqs": "FAQs",
+  "help_center": "Help Center",
+  "change_language_button": "Change Language",
+  "logout": "Logout",
+
+  "address_title": "Address",
+  "saved_addresses": "Saved Addresses",
+  "default_label": "Default",
+
+  "details_title": "Details",
+  "reviews_count": "(45 reviews)",
+  "price_label": "Price",
+  "add_to_cart_button": "Add to Cart",
+  "added_successfully_msg": "Added Successfully",
+
+  "my_cart_title": "My Cart",
+  "subtotal_label": "Sub-total",
+  "vat_label": "VAT (%)",
+  "shipping_fee_label": "Shipping fee",
+  "total_label": "Total",
+  "checkout_button": "Go To Checkout",
+
+  "search_hint": "Search for clothes...",
+  "all_categories": "All",
+
+  "nav_home": "Home",
+  "nav_cart": "Cart",
+  "nav_account": "Account"
+}

@@ -21,7 +21,7 @@ class _StoreCategoriesState extends State<StoreCategories> {
       child: BlocBuilder<CategoriesCubit, CategoriesState>(
         builder: (context, state) {
           if (state is CategoriesLoading) {
-            return Center(child: CircularProgressIndicator());
+            return SizedBox(height: 10);
           }
           if (state is CategoriesFailure) {
             return Center(child: Text(state.msg));

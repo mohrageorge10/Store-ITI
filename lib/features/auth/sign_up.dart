@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:store/core/helpers/app_button.dart';
 import 'package:store/core/helpers/app_colors.dart';
 import 'package:store/core/helpers/app_field.dart';
 import 'package:store/core/helpers/app_pass_field.dart';
 import 'package:store/core/helpers/app_text_styles.dart';
+import 'package:store/core/helpers/locale_keys.dart';
 import 'package:store/features/auth/login.dart';
 
 class SignUp extends StatelessWidget {
@@ -22,58 +24,86 @@ class SignUp extends StatelessWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-
           children: [
-            Text("Create an account", style: AppTextStyles.kText32Black),
+            Text(
+              LocaleKeys.createAccountTitle.tr(),
+              style: AppTextStyles.kText32Black,
+            ),
 
             Text(
-              "Let’s create your account.",
+              LocaleKeys.createAccountSubtitle.tr(),
               style: AppTextStyles.kText16Gray,
             ),
-            SizedBox(height: 24),
-            Text("Full Name", style: AppTextStyles.kText16Black),
+            const SizedBox(height: 24),
+
+            Text(
+              LocaleKeys.fullNameLabel.tr(),
+              style: AppTextStyles.kText16Black,
+            ),
             AppField(
               controller: TextEditingController(),
-              hint: "Enter your full name",
+              hint: LocaleKeys.fullNameHint.tr(),
               obscureText: false,
             ),
-            SizedBox(height: 16),
-            Text("User Name", style: AppTextStyles.kText16Black),
+
+            const SizedBox(height: 16),
+
+            Text(
+              LocaleKeys.usernameLabel.tr(),
+              style: AppTextStyles.kText16Black,
+            ),
             AppField(
               controller: TextEditingController(),
-              hint: "Enter your email address",
+              hint: LocaleKeys.emailHint.tr(),
               obscureText: false,
             ),
-            SizedBox(height: 16),
-            Text("Password", style: AppTextStyles.kText16Black),
+
+            const SizedBox(height: 16),
+
+            Text(
+              LocaleKeys.passwordLabel.tr(),
+              style: AppTextStyles.kText16Black,
+            ),
             AppPassField(
               controller: TextEditingController(),
-              hint: "Enter your password",
+              hint: LocaleKeys.passwordHint.tr(),
             ),
-            SizedBox(height: 16),
-            Text("Confirm Password", style: AppTextStyles.kText16Black),
+
+            const SizedBox(height: 16),
+
+            Text(
+              LocaleKeys.confirmPasswordLabel.tr(),
+              style: AppTextStyles.kText16Black,
+            ),
             AppPassField(
               controller: TextEditingController(),
-              hint: "Enter your password",
+              hint: LocaleKeys.passwordHint.tr(),
             ),
-            SizedBox(height: 55),
-            AppButton(label: "Create an Account", onPressed: () {}),
-            Spacer(),
+
+            const SizedBox(height: 55),
+
+            AppButton(
+              label: LocaleKeys.createAccountButton.tr(),
+              onPressed: () {},
+            ),
+
+            const Spacer(),
+
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Already have an account? ",
+                  LocaleKeys.alreadyHaveAccountText.tr(),
                   style: AppTextStyles.kText16Gray,
                 ),
                 GestureDetector(
                   onTap: () {
                     Navigator.of(
                       context,
-                    ).push(MaterialPageRoute(builder: (_) => Login()));
+                    ).push(MaterialPageRoute(builder: (_) => const Login()));
                   },
                   child: Text(
-                    "Log In",
+                    LocaleKeys.logInButton.tr(),
                     style: AppTextStyles.kText16Black.copyWith(
                       decoration: TextDecoration.underline,
                     ),
